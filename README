@@ -2,47 +2,35 @@
 
 This project demonstrates an **Arduino-based automatic gate system** that uses an ultrasonic sensor to detect nearby objects. When an object (e.g., a person or car) is detected within a set distance, the gate opens using a servo motor and provides visual (LEDs) and audible (buzzer) feedback. After a timeout period, the gate automatically closes.
 
+---
+
 ## 📦 Features
 
 - 🔊 **Ultrasonic distance sensing** to detect approaching objects
 - ⚙️ **Servo motor** to open and close the gate
 - 🔴🔵 **Red and Blue LEDs** to indicate gate status
 - 🔔 **Buzzer** that beeps while the gate is open
-- ⏳ Automatic closing after a configurable timeout
+- ⏳ Automatic closing after a configurable timeout (5 seconds)
 
-## 🔧 Hardware Required
+---
 
-- Arduino (Uno, Nano, or compatible board)
-- Ultrasonic sensor (HC-SR04)
-- Servo motor (e.g., SG90)
-- Red LED
-- Blue LED
-- Resistors (for LEDs)
-- Buzzer
-- Jumper wires and breadboard
+## 🧰 Hardware Required
 
-## 🧠 Working Principle
+| Component           | Quantity |
+|---------------------|----------|
+| Arduino Uno/Nano/etc.| 1        |
+| Ultrasonic Sensor (HC-SR04) | 1 |
+| Servo Motor (e.g., SG90)    | 1 |
+| Red LED            | 1        |
+| Blue LED           | 1        |
+| 220Ω Resistors (for LEDs) | 2 |
+| Buzzer             | 1        |
+| Breadboard         | 1        |
+| Jumper Wires       | As needed |
 
-1. **Object Detection:** The ultrasonic sensor continuously checks the distance to nearby objects.
-2. **Gate Opens:** If an object is detected within 50 cm, the gate opens (servo rotates to 90°).
-3. **Visual Feedback:** The red LED turns off, blue LED turns on.
-4. **Audible Feedback:** A buzzer beeps periodically while the gate is open.
-5. **Gate Closes:** After 5 seconds of no object detected, the gate closes and indicators return to default.
+---
 
-## 🖥️ Code Overview
-
-- `getDistance()` — Measures object distance using the ultrasonic sensor.
-- `loop()` — Controls the gate, LEDs, and buzzer based on distance readings.
-- `Servo` — Controls gate arm.
-- `millis()` — Used to time the buzzer and gate auto-close delay.
-
-## 🚀 Getting Started
-
-1. Connect the components as per the pin definitions in the code.
-2. Upload the sketch to your Arduino board using the Arduino IDE.
-3. Power the board and test the gate system by placing an object in front of the sensor.
-
-## 📌 Pin Configuration
+## ⚙️ Pin Configuration
 
 | Component           | Arduino Pin |
 |---------------------|-------------|
@@ -55,9 +43,41 @@ This project demonstrates an **Arduino-based automatic gate system** that uses a
 | Servo Motor         | 6           |
 | Buzzer              | 12          |
 
-## 📸 Demo (optional)
+---
 
-_Add a short video or image of the working setup here if available._
+## 🚀 How to Run
+
+### 🔌 Step 1: Circuit Setup
+
+- Assemble your circuit according to the **Pin Configuration** above.
+- Use resistors for LEDs and connect cathodes to ground.
+
+### 💻 Step 2: Upload Code to Arduino
+
+1. Open the `.ino` sketch file (the provided Arduino code) in the **Arduino IDE**.
+2. Select your Arduino board and port:
+   - **Tools → Board → Arduino Uno** (or your board)
+   - **Tools → Port → [Your COM Port]**
+3. Click **Upload** (right arrow button).
+
+### 🧪 Step 3: Test It
+
+- Power your Arduino using USB or an external power source.
+- Place an object within 50 cm in front of the ultrasonic sensor.
+- The gate (servo) should open, red LED should turn OFF, blue LED turns ON, and the buzzer starts beeping softly.
+- When the object is removed, after 5 seconds the gate closes and indicators reset.
+
+---
+
+## 🧠 How It Works
+
+- **Object Detection:** Uses `pulseIn()` with the HC-SR04 sensor to measure distance.
+- **Gate Control:** A servo motor opens/closes the gate when an object is within range.
+- **LEDs:** Red = Closed, Blue = Open.
+- **Buzzer:** Emits short periodic beeps while the gate is open.
+- **Auto-Close:** After 5 seconds of no detection, the gate closes.
+
+---
 
 ## 📄 License
 
@@ -65,8 +85,7 @@ This project is open-source and free to use for educational and non-commercial p
 
 ---
 
-### 📬 Author
+## ✍️ Author
 
 **Ashraf Utuyubahe**  
 GitHub: [@ashrafutuyubahe](https://github.com/ashrafutuyubahe)
-
